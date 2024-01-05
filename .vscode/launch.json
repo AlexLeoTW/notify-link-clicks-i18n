@@ -1,0 +1,20 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome with remote debugging enabled",
+      "type": "chrome",
+      "request": "launch",
+      "webRoot": "${workspaceFolder}",
+      "url": "https://github.com/AlexLeoTW/notify-link-clicks-i18n",
+      "runtimeArgs": [
+        "--remote-debugging-pipe", // Enable remote debugging
+        "--user-data-dir=/${workspaceFolder}/TmpProfile", // Isolate dev profile
+        "--load-extension=${workspaceFolder}/build" // Load extension
+      ]
+    }
+  ]
+}

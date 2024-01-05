@@ -3,3 +3,6 @@ node_modules
 
 # bundle output
 build
+
+# chrome profile directory (launching chrome with --user-data-dir=chrome-profile)
+TmpProfile
