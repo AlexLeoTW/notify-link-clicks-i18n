@@ -1,11 +1,15 @@
-const browser = window.browser || window.chrome;
+import browser from "webextension-polyfill";
+import icon from "@/icons/link-48.png";
 
 /**
  * Log that we received the message.
  * Then display a notification. The notification contains the URL,
  * which we read from the message.
  */
-function notify(message) {
+
+const handleMessage: Parameters<
+  typeof browser.runtime.onMessage.addListener
+>[0] = (message, sender) => {
   console.log("background script received message");
 
   const title = browser.i18n.getMessage("notificationTitle");
@@ -13,13 +17,13 @@ function notify(message) {
 
   browser.notifications.create({
     type: "basic",
-    iconUrl: browser.extension.getURL("icons/link-48.png"),
-    title: title,
+    title,
     message: content,
+    iconUrl: icon,
   });
-}
+};
 
 /**
  * Assign `notify()` as a listener to messages from the content script.
  */
-browser.runtime.onMessage.addListener(notify);
+browser.runtime.onMessage.addListener(handleMessage);
